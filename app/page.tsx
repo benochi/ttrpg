@@ -35,23 +35,24 @@ export default function Home() {
   }, [clerkUser, isLoaded])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-6 bg-background text-foreground">
-      <header className="text-center">
-        <h1 className="text-4xl font-bold">TTRPG start</h1>
-        <p className="text-lg special-font1">Special font test area</p>
+    <div className="flex flex-col h-full border bg-background text-foreground">
+      <header className="p-4 text-center bg-gray-800 text-foreground">
+        <h1 className="text-4xl font-bold">Thaloran</h1>
+        <p className="text-lg">Welcome to the world of magic and machine!</p>
       </header>
-      <main className="flex flex-col items-center gap-4">
+
+      <main className="flex-grow flex items-center justify-center p-4">
         <Suspense fallback={<p>Loading user...</p>}>
           {user ? (
-            <div className="mt-4">
+            <div className="mt-4 text-center">
               <h2 className="text-xl">Welcome, {user.name}!</h2>
               <p>Email: {user.email}</p>
               <p>Role: {user.role}</p>
             </div>
           ) : clerkUser ? (
-            <p>Loading user...</p> 
+            <p>Loading user...</p>
           ) : (
-            <p>Log in to continue</p> 
+            <p>Log in to continue</p>
           )}
         </Suspense>
       </main>

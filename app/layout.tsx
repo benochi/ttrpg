@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="min-h-screen bg-background text-foreground p-1">
-          <header className="flex justify-between items-center p-1">
-            <div className="flex items-center gap-4">
+        <body className="bg-background h-screen text-foreground">
+          <header className="flex justify-between items-center">
+            <div className="flex items-center p-2">
               <SignedOut>
                 <SignInButton />
               </SignedOut>
@@ -27,8 +27,8 @@ export default function RootLayout({
             </div>
           </header>
           
-          <div className="flex justify-center items-center min-h-screen">
-            <div className="w-full max-w-full px-6">
+          <div className="flex justify-center items-center">
+            <div className="w-full max-w-full px-4">
               {/* Providers are for tanstack */}
               <Providers>
                 {children}
