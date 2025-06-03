@@ -20,12 +20,16 @@ export default function RootLayout({
             <SignInButton />
           </SignedOut>
           <SignedIn>
-            <UserButton showName/>
+            <UserButton showName />
           </SignedIn>
-          {/* Providers are for tanstack */}
-          <Providers>
-            {children}
-          </Providers>
+          <div className="flex justify-center items-center min-h-screen">
+            <div className="w-full max-w-full px-6">
+              {/* Providers are for tanstack */}
+              <Providers>
+                {children}
+              </Providers>
+            </div>
+          </div>
         </body>
       </html>
     </ClerkProvider>

@@ -1,4 +1,4 @@
-import { currentUser,auth } from "@clerk/nextjs/server";
+import { currentUser, auth } from "@clerk/nextjs/server";
 
 export default async function Clerk(){
   const user = await currentUser()
