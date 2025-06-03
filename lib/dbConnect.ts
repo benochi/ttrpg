@@ -39,7 +39,15 @@ async function dbConnect(): Promise<mongoose.Connection> {
 
   if (!cached.promise) {
     console.log("Creating new database connection for", process.env.NODE_ENV);
-    cached.promise = mongoose.connect(MONGODB_URI, { dbName: "boilerplate" }).then((mongooseInstance) => {
+    const dbName = process.env.NODE_ENV === "production" 
+      ? "prod_db" 
+      : process.env.NODE_ENV === "test" 
+      ? "test_db" 
+      : "ttrpg";
+
+      console.log("Connecting to database:", dbName);
+
+    cached.promise = mongoose.connect(MONGODB_URI, { dbName }).then((mongooseInstance) => {
       return mongooseInstance.connection;
     });
   }
