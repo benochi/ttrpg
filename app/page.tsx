@@ -29,6 +29,8 @@ export default function Home() {
       }
 
       getUser();
+    } else {
+      setUser(null);
     }
   }, [clerkUser, isLoaded])
 
@@ -46,8 +48,10 @@ export default function Home() {
               <p>Email: {user.email}</p>
               <p>Role: {user.role}</p>
             </div>
+          ) : clerkUser ? (
+            <p>Loading user...</p> 
           ) : (
-            <p>Loading user...</p>
+            <p>Log in to continue</p> 
           )}
         </Suspense>
       </main>
