@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
-  clerkId: string; //if using clerk
+  clerkId: string; 
   email: string;
   name?: string;
   role: "user" | "admin";
