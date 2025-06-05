@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface ISavedGame extends Document {
-  game: mongoose.Types.ObjectId;
   slot: number;
   characters: mongoose.Types.ObjectId[];
   createdAt: Date;
@@ -10,7 +9,6 @@ export interface ISavedGame extends Document {
 
 const SavedGameSchema = new Schema<ISavedGame>(
   {
-    game: { type: Schema.Types.ObjectId, ref: 'Game', required: true },
     slot: { type: Number, required: true },
     characters: [{ type: Schema.Types.ObjectId, ref: 'Character' }]
   },

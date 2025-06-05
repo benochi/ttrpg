@@ -18,7 +18,7 @@ const ItemSchema = new Schema<IItem>({
   height: { type: Number, required: true },
   stackable: { type: Boolean, default: false },
   maxStack: { type: Number },
-  weight: { type: Number, required: true },
+  weight: { type: Number, required: true, default: 0 },
 });
 
 export default mongoose.models.Item || mongoose.model<IItem>("Item", ItemSchema);
