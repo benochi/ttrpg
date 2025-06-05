@@ -43,44 +43,6 @@ export async function GET(req: Request): Promise<NextResponse> {
   }
 }
 
-
-
-
-// POST: Register a new user we don't need this because of clerk,
-// we just need to update info with a patch, but for info sake i left it in.
-// export async function POST(req: RequestWithJSON): Promise<NextResponse> {
-//   await dbConnect();
-
-//   // Get the authenticated user from Clerk
-//   const clerkUser = await currentUser();
-//   if (!clerkUser) return errorResponse("Unauthorized", 401);
-
-//   try {
-//     // Check if user already exists in MongoDB
-//     const existingUser: IUser | null = await User.findOne({ clerkId: clerkUser.id });
-//     if (existingUser) return errorResponse("User already exists", 400);
-
-//     // Prepare user data (email is already verified by Clerk)
-//     const newUserData: z.infer<typeof userSchema> = {
-//       clerkId: clerkUser.id,
-//       email: clerkUser.emailAddresses[0].emailAddress, // Clerk ensures unique emails
-//       name: clerkUser.firstName || "Unnamed",
-//       role: "user", // Default role
-//     };
-
-//     // Validate with Zod
-//     const parsedBody = userSchema.safeParse(newUserData);
-//     if (!parsedBody.success) return errorResponse(parsedBody.error.format(), 400);
-
-//     // Create user in MongoDB
-//     const newUser = await User.create(parsedBody.data);
-
-//     return NextResponse.json(newUser, { status: 201 });
-//   } catch (error) {
-//     return errorResponse("Failed to register user", 500);
-//   }
-// }
-
 // PATCH: Update a user - Users can update themselves, Admins can update any user
 export async function PATCH(req: RequestWithJSON): Promise<NextResponse> {
   try {
