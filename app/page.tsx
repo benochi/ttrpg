@@ -33,7 +33,7 @@ export default function Home() {
       </header>
 
       <main className="flex-grow p-4 flex justify-center items-start overflow-y-auto">
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-8xl min-h-full">
           <Suspense fallback={<p>Loading user...</p>}>
             {!user ? (
               <p className="text-center">Log in to continue</p>
