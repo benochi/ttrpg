@@ -9,7 +9,10 @@
   --color-primary: #f44e37;
   --color-background-dark: #1a1a1a;
   --color-background-light: #f2f2f2;
-  --color-background-hover: #8ab3da;
+  --color-background-hover: #4da2f0;
+
+  --color-navbar-dark: #111827;
+  --color-navbar-mid: #132557; 
 
   /* Text colors */
   --color-text-light: #f2f2f2;
@@ -54,6 +57,13 @@
 }
 @utility bg-hover {
   background-color: var(--color-background-hover);
+}
+
+@utility bg-navbar {
+  background: linear-gradient(to right, 
+    var(--color-navbar-dark) 10%, 
+    var(--color-navbar-mid) 50%, 
+    var(--color-navbar-dark) 90%);
 }
 
 @utility text-light {
