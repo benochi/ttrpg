@@ -9,12 +9,14 @@
   --color-primary: #f44e37;
   --color-background-dark: #1a1a1a;
   --color-background-light: #f2f2f2;
+  --color-background-hover: #8ab3da;
 
   /* Text colors */
   --color-text-light: #f2f2f2;
   --color-text-dark: #1a1a1a;
   --color-text-muted: #9ca3af;
   --color-text-accent: #f44e37;
+  --color-text-hover: #8ab3da;
 
   /* Border */
   --color-border-default: #374151;
@@ -50,6 +52,9 @@
 @utility bg-primary {
   background-color: var(--color-primary);
 }
+@utility bg-hover {
+  background-color: var(--color-background-hover);
+}
 
 @utility text-light {
   color: var(--color-text-light);
@@ -62,6 +67,10 @@
 }
 @utility text-accent {
   color: var(--color-text-accent);
+}
+
+@utility text-bluegrey {
+  color: var(--color-text-hover);
 }
 
 @utility border-default {

@@ -40,7 +40,7 @@ export default function Home() {
             ) : activeGameId ? (
               <GameDashboard gameId={activeGameId} onBackAction={() => setActiveGameId(null)} />
             ) : (
-              <GameSelector userId={user._id.toString()} onSelectGame={setActiveGameId} />
+              <GameSelector userId={user._id.toString()} onSelectGameAction={setActiveGameId} />
             )}
           </Suspense>
         </div>
