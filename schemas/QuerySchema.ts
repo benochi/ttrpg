@@ -13,3 +13,5 @@ export const querySchema = z.object({
   status: z.string().optional(), // Filter by status (e.g., "active", "pending", "banned")
   includeCount: z.enum(["true", "false"]).optional(), // Whether to return total count for pagination (as a string input)
 });
+
+export type QueryParams = z.infer<typeof querySchema>;
