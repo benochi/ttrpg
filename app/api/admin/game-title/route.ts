@@ -3,31 +3,29 @@ import dbConnect from "@/lib/dbConnect";
 import GameTitle from "@/models/GameTitle";
 import { requireAdmin } from "@/lib/getUser";
 import { querySchema, QueryParams } from "@/schemas/QuerySchema";
+import { gameTitleSchema } from "@/schemas/GameTitleSchema";
 
 export async function POST(req: NextRequest) {
   await dbConnect();
   try {
     await requireAdmin();
     const body = await req.json();
+    const parseResult = gameTitleSchema.safeParse(body);
+
+    if (!parseResult.success) {
+      return NextResponse.json({ error: "Invalid input", details: parseResult.error.flatten() }, { status: 400 });
+    }
 
     const game = new GameTitle({
-      name: body.name,
-      description: body.description,
-      developer: body.developer,
-      genre: body.genre,
-      tags: body.tags,
-      features: body.features,
-      releaseDate: new Date(body.releaseDate),
-      isFree: body.isFree,
-      thumbnailUrl: body.thumbnailUrl,
-      coverImageUrl: body.coverImageUrl
+      ...parseResult.data,
+      releaseDate: new Date(parseResult.data.releaseDate),
     });
 
     await game.save();
     return NextResponse.json({ message: "Game created successfully" });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
-    return NextResponse.json({ error: message }, { status: 403 });
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 

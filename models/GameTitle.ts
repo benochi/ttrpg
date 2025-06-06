@@ -11,6 +11,8 @@ export interface IGameTitle extends Document {
   thumbnailUrl?: string;
   coverImageUrl?: string;
   isFree: boolean;
+  price?: number;
+  subscriptionPrice?: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -26,7 +28,9 @@ const GameTitleSchema = new Schema<IGameTitle>(
     releaseDate: { type: Date, required: true },
     thumbnailUrl: { type: String },
     coverImageUrl: { type: String },
-    isFree: { type: Boolean, default: false }
+    isFree: { type: Boolean, default: false },
+    price: { type: Number },
+    subscriptionPrice: { type: Number },
   },
   { timestamps: true }
 );
