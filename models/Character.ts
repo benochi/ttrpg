@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface ICharacter extends Document {
   name: string;
   level: number;
-  inventory: mongoose.Types.ObjectId;
+  inventoryEquipped: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -12,7 +12,7 @@ const CharacterSchema = new Schema<ICharacter>(
   {
     name: { type: String, required: true },
     level: { type: Number, default: 1 },
-    inventory: { type: Schema.Types.ObjectId, ref: 'Inventory' }
+    inventoryEquipped: { type: Schema.Types.ObjectId, ref: 'InventoryEquipped' } // update to inventory equipped an unequipped. 
   },
   { timestamps: true }
 );
